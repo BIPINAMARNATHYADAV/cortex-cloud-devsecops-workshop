@@ -3,19 +3,20 @@ provider "google" {
   region  = "us-central1"
 }
 
-resource "google_storage_bucket" "example" {
-  name          = "demo-${random_id.rand_suffix.hex}"
+resource "google_storage_bucket" "sample" {
+  name          = "demo2-${random_id.Rand_suffix.hex}"
   location      = "us-central1"
   force_destroy = true
 
   uniform_bucket_level_access = false
-  public_access_prevention    = "enforced"
+
+  #public_access_prevention = "enforced" ##comment out this line of code for demo
 }
 
-resource "random_id" "rand_suffix" {
+resource "random_id" "Rand_suffix" {
   byte_length = 4
 }
 
-output "bucket_name" {
-  value = google_storage_bucket.example.name
+output "Bucket_name" {
+  value = google_storage_bucket.sample.name
 }
